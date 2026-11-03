@@ -2,38 +2,53 @@
 import "../styles/global.css";
 import SiteHeader from "../components/SiteHeader.astro";
 import SiteFooter from "../components/SiteFooter.astro";
-import { site } from "../site.config";
-import { pathTo } from "../lib/paths";
+import SeoHead from "../components/SeoHead.astro";
+import { pageSeo, site } from "../site.config";
 
 interface Props {
   title: string;
   description?: string;
   narrow?: boolean;
+  ogType?: "website" | "article";
+  noindex?: boolean;
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 }
 
-const { title, description = site.description, narrow = false } = Astro.props;
-const fullTitle =
-  title === site.name
-    ? `${site.name} — Scan documents to PDF on iPhone & iPad`
-    : `${title} · ${site.name}`;
+const {
+  title,
+  description = site.description,
+  narrow = false,
+  ogType = "website",
+  noindex = false,
+  jsonLd,
+} = Astro.props;
+
+const isHome = title === site.name;
+const seoTitle = isHome ? pageSeo.home.title : `${title} · ${site.name}`;
 ---
 
 <!doctype html>
-<html lang="en" data-theme="light">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content={description} />
-    <meta name="generator" content={Astro.generator} />
-    <meta name="theme-color" content="#ffffff" />
+    <meta name="theme-color" content="#0d7377" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400..800;1,400..800&display=swap"
       rel="stylesheet"
     />
-    <link rel="icon" type="image/svg+xml" href={pathTo("favicon.svg")} />
-    <title>{fullTitle}</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+    <SeoHead
+      title={seoTitle}
+      description={description}
+      pathname={Astro.url.pathname}
+      ogType={ogType}
+      noindex={noindex}
+      jsonLd={jsonLd}
+    />
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>

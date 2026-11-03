@@ -2,8 +2,9 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PlatformDownloads from "../components/PlatformDownloads.astro";
 import FeatureIcon from "../components/FeatureIcon.astro";
-import { site } from "../site.config";
+import { pageSeo, site } from "../site.config";
 import { pathTo } from "../lib/paths";
+import { homeJsonLd } from "../lib/seo";
 
 const features = [
   {
@@ -39,7 +40,7 @@ const features = [
 ];
 ---
 
-<BaseLayout title={site.name}>
+<BaseLayout title={site.name} description={pageSeo.home.description} jsonLd={homeJsonLd()}>
   <div class="highlights" role="list">
     <div class="highlight" role="listitem">
       <p class="highlight__title">No account</p>

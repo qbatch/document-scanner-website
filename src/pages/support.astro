@@ -1,8 +1,12 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import ReaderSection from "../components/ReaderSection.astro";
-import { site, stores } from "../site.config";
+import { pageSeo, site, stores } from "../site.config";
 import { pathTo } from "../lib/paths";
+import { pageCanonical, webPageJsonLd } from "../lib/seo";
+
+const seo = pageSeo.support;
+const jsonLd = webPageJsonLd(`${seo.title} · ${site.name}`, seo.description, pageCanonical("/support"));
 
 const toc = [
   { id: "requirements", label: "Requirements" },
@@ -17,7 +21,7 @@ const toc = [
 ];
 ---
 
-<BaseLayout title="Help & Support" narrow>
+<BaseLayout title={seo.title} description={seo.description} jsonLd={jsonLd} narrow>
   <article class="prose support-page">
     <header class="doc-header">
       <h1>Help &amp; Support</h1>

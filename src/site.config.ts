@@ -1,12 +1,43 @@
-/** Site-wide constants — update store URLs when listings are live. */
+/** Canonical production origin — must match astro.config.mjs `site`. */
+export const siteOrigin = "https://paperfolio.lixul.com";
+
 export const site = {
   name: "Paperfolio",
   tagline: "Document scanner for iPhone and iPad",
   description:
     "Scan papers into watermark-free PDFs on your device. No account, offline-capable scanning, optional privacy-friendly analytics. iOS 17+.",
+  /** Short phrases for meta keywords (minor signal; keep honest). */
+  keywords: [
+    "document scanner",
+    "PDF scanner",
+    "scan to PDF",
+    "iPhone scanner",
+    "iPad scanner",
+    "watermark-free PDF",
+    "offline scanner",
+  ],
   platformsLabel: "iPhone & iPad · iOS 17+",
   lastUpdated: "November 2, 2026",
   copyrightYear: 2026,
+  locale: "en_US",
+  twitterHandle: "",
+} as const;
+
+export const pageSeo = {
+  home: {
+    title: "Paperfolio — Scan documents to PDF on iPhone & iPad",
+    description: site.description,
+  },
+  privacy: {
+    title: "Privacy Policy",
+    description:
+      "How Paperfolio handles your scans, camera access, optional analytics, and on-device storage. Privacy-first document scanning for iPhone and iPad.",
+  },
+  support: {
+    title: "Help & Support",
+    description:
+      "Paperfolio help: scan and import documents, create PDFs, troubleshooting, and contact info for iPhone and iPad.",
+  },
 } as const;
 
 export const stores = {

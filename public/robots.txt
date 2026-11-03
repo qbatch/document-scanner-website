@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://paperfolio.lixul.com/sitemap-index.xml

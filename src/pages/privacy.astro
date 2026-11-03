@@ -1,10 +1,14 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { site } from "../site.config";
+import { pageSeo, site } from "../site.config";
 import { pathTo } from "../lib/paths";
+import { pageCanonical, webPageJsonLd } from "../lib/seo";
+
+const seo = pageSeo.privacy;
+const jsonLd = webPageJsonLd(`${seo.title} · ${site.name}`, seo.description, pageCanonical("/privacy"));
 ---
 
-<BaseLayout title="Privacy Policy" narrow>
+<BaseLayout title={seo.title} description={seo.description} ogType="article" jsonLd={jsonLd} narrow>
   <article class="prose">
     <header class="doc-header">
       <h1>Privacy Policy</h1>
