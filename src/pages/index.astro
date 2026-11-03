@@ -1,0 +1,247 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PlatformDownloads from "../components/PlatformDownloads.astro";
+import FeatureIcon from "../components/FeatureIcon.astro";
+import { site, stores } from "../site.config";
+
+const features = [
+  {
+    icon: "scan" as const,
+    title: "Scan in seconds",
+    body: "Capture documents with your camera, or import selected photos when scanning isn’t an option.",
+  },
+  {
+    icon: "edit" as const,
+    title: "Crop, rotate, enhance",
+    body: "Clean up every page before you export—reorder, adjust crops, and improve legibility on device.",
+  },
+  {
+    icon: "pdf" as const,
+    title: "Watermark-free PDFs",
+    body: `Create multi-page PDFs locally. ${site.name} does not stamp a watermark on PDFs it generates.`,
+  },
+  {
+    icon: "share" as const,
+    title: "Share on your terms",
+    body: "Use your platform’s share sheet or file picker. Documents go where you send them—email, Files, or another app.",
+  },
+  {
+    icon: "offline" as const,
+    title: "Works offline",
+    body: `Core scanning, editing, and PDF creation run on your device. No account and no automatic upload to a ${site.name} cloud.`,
+  },
+  {
+    icon: "privacy" as const,
+    title: "Privacy-first by default",
+    body: "Scans stay in the app unless you export or share. Optional analytics are off by default and never include document contents.",
+  },
+];
+---
+
+<BaseLayout title={site.name}>
+  <div class="highlights" role="list">
+    <div class="highlight" role="listitem">
+      <p class="highlight__title">No account</p>
+      <p class="highlight__text">Open the app and scan—no sign-up or subscription to export PDFs.</p>
+    </div>
+    <div class="highlight" role="listitem">
+      <p class="highlight__title">On your device</p>
+      <p class="highlight__text">Scan, edit, and create PDFs locally. Optional analytics stay off until you opt in.</p>
+    </div>
+    <div class="highlight" role="listitem">
+      <p class="highlight__title">Watermark-free</p>
+      <p class="highlight__text">PDFs you create are yours—no Paperfolio stamp on exported files.</p>
+    </div>
+  </div>
+
+  <section class="hero" aria-labelledby="hero-heading">
+    <div class="hero__copy">
+      <p class="hero__eyebrow">
+        <span class="hero__eyebrow-dot" aria-hidden="true"></span>
+        {site.platformsLabel}
+      </p>
+      <h1 id="hero-heading">{site.name}</h1>
+      <p class="hero__lead">{site.tagline}</p>
+      <p class="hero__lead hero__lead--emphasis">
+        Scan papers into crisp, watermark-free PDFs—on your device, offline-capable, no account required.
+      </p>
+      <PlatformDownloads />
+      <p class="hero__meta">Productivity · Camera optional if you only import photos</p>
+    </div>
+
+    <div class="hero__visual" aria-hidden="true">
+      <div class="product-frame">
+        <div class="product-frame__bar">
+          <div class="product-frame__dots">
+            <span></span><span></span><span></span>
+          </div>
+          <span class="product-frame__label">Library · Receipt.pdf</span>
+        </div>
+        <div class="product-frame__body">
+          <div class="doc-sheet">
+            <div class="doc-sheet__lines">
+              <div class="doc-sheet__line"></div>
+              <div class="doc-sheet__line doc-sheet__line--w70"></div>
+              <div class="doc-sheet__line"></div>
+              <div class="doc-sheet__line doc-sheet__line--w55"></div>
+              <div class="doc-sheet__line doc-sheet__line--w40"></div>
+              <div class="doc-sheet__line doc-sheet__line--w70"></div>
+            </div>
+            <div class="doc-sheet__meta">
+              <span class="chip"><span class="chip__dot"></span> On-device PDF</span>
+              <span>3 pages · watermark-free</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="platforms-heading">
+    <div class="section__header">
+      <span class="section-label">Platforms</span>
+      <h2 id="platforms-heading">Available on your platform</h2>
+      <p class="section__intro">
+        The same Paperfolio experience—scan, edit, and export PDFs locally—across the mobile platforms you already use.
+      </p>
+    </div>
+    <div class="grid grid--3">
+      <article class="card">
+        <h3>iOS</h3>
+        <p>{stores.ios.requirement}</p>
+        <div class="card__action">
+          <a class="btn btn--secondary btn--block" href={stores.ios.href} rel="noopener noreferrer">{stores.ios.cta}</a>
+        </div>
+      </article>
+      <article class="card">
+        <h3>Android</h3>
+        <p>{stores.android.requirement}</p>
+        <div class="card__action">
+          <a class="btn btn--secondary btn--block" href={stores.android.href} rel="noopener noreferrer">{stores.android.cta}</a>
+        </div>
+      </article>
+      <article class="card">
+        <h3>HarmonyOS</h3>
+        <p>{stores.harmony.requirement}</p>
+        <div class="card__action">
+          <a class="btn btn--secondary btn--block" href={stores.harmony.href} rel="noopener noreferrer">{stores.harmony.cta}</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section section--muted" aria-labelledby="why-heading">
+    <div class="section__inner">
+      <div class="section__header">
+        <span class="section-label">Why {site.name}</span>
+        <h2 id="why-heading">Built for everyday papers</h2>
+        <p class="section__intro">
+          Turn receipts, forms, and notes into PDFs without paywalls on export or surprise cloud uploads.
+        </p>
+      </div>
+      <div class="value-row">
+        <div class="value-tile">
+          <h3>Honest scope</h3>
+          <p>No OCR or cloud-sync claims—just scanning and PDFs that work on your phone or tablet.</p>
+        </div>
+        <div class="value-tile">
+          <h3>You control sharing</h3>
+          <p>Export through your OS share sheet when you choose. Nothing leaves the app automatically.</p>
+        </div>
+        <div class="value-tile">
+          <h3>Clear privacy</h3>
+          <p>Optional analytics are off by default. Read the <a href="/privacy">Privacy Policy</a> or <a href="/support">Support guide</a>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="features-heading">
+    <div class="section__header">
+      <span class="section-label">Product</span>
+      <h2 id="features-heading">Features</h2>
+      <p class="section__intro">Everything you need for everyday papers—without account lock-in or cloud surprises.</p>
+    </div>
+    <div class="grid grid--features">
+      {
+        features.map((feature) => (
+          <article class="card">
+            <FeatureIcon name={feature.icon} />
+            <h3>{feature.title}</h3>
+            <p>
+              {feature.body}
+              {feature.icon === "privacy" && (
+                <>
+                  {" "}
+                  <a href="/privacy">Privacy Policy →</a>
+                </>
+              )}
+            </p>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="section section--muted" aria-labelledby="how-heading">
+    <div class="section__inner">
+      <div class="section__header">
+        <span class="section-label">Workflow</span>
+        <h2 id="how-heading">How it works</h2>
+      <p class="section__intro">Five steps from paper to PDF—no account, no wait.</p>
+    </div>
+    <ol class="steps">
+      <li><strong>Open {site.name}</strong> — no account needed.</li>
+      <li><strong>Scan or import</strong> pages from the camera or photo library.</li>
+      <li><strong>Edit</strong> — crop, enhance, and reorder.</li>
+      <li><strong>Create a PDF</strong> — saved on your device.</li>
+      <li><strong>Share or save</strong> — only when you choose.</li>
+    </ol>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="files-heading">
+    <div class="section__header">
+      <span class="section-label">Privacy</span>
+      <h2 id="files-heading">Your files stay yours</h2>
+    </div>
+    <div class="panel panel--accent">
+      <p>
+        Documents live in {site.name}’s private storage on your phone or tablet. We do not automatically sync them to our
+        servers. If you use device or cloud backup from your OS vendor, app data may be included according to{" "}
+        <strong>your</strong> backup settings. Deleting a document in {site.name} removes our copy on the device—it does not
+        remove files you already saved elsewhere.
+      </p>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="expect-heading">
+    <div class="section__header">
+      <h2 id="expect-heading">What {site.name} is (and isn’t)</h2>
+      <p class="section__intro">We’d rather be clear than oversell.</p>
+    </div>
+    <div class="grid grid--2">
+      <div class="callout callout--plain">
+        <p>
+          <strong>{site.name} is for:</strong> receipts, notes, forms, and everyday papers you want as a PDF on your phone or
+          tablet.
+        </p>
+      </div>
+      <div class="callout callout--plain">
+        <p><strong>This release does not include:</strong></p>
+        <ul>
+          <li>OCR or searchable text inside scanned PDFs</li>
+          <li>Automatic cloud backup or account sync through {site.name}</li>
+          <li>A guarantee that files outside the app are removed when you delete inside the app</li>
+        </ul>
+      </div>
+    </div>
+    <p class="section-note"><a href="/support">Help &amp; Support →</a></p>
+  </section>
+
+  <section class="cta-band" aria-labelledby="get-heading">
+    <h2 id="get-heading">Get {site.name}</h2>
+    <p>Choose your platform. Each build follows the same privacy principles described in our Privacy Policy.</p>
+    <PlatformDownloads />
+  </section>
+</BaseLayout>

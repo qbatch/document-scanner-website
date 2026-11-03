@@ -1,0 +1,200 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ReaderSection from "../components/ReaderSection.astro";
+import { site, stores } from "../site.config";
+
+const toc = [
+  { id: "requirements", label: "Requirements" },
+  { id: "getting-started", label: "Getting started" },
+  { id: "common-tasks", label: "Common tasks" },
+  { id: "files", label: "Where files live" },
+  { id: "privacy", label: "Privacy & analytics" },
+  { id: "feedback", label: "Send feedback" },
+  { id: "limitations", label: "What we don’t do" },
+  { id: "troubleshooting", label: "Troubleshooting" },
+  { id: "contact", label: "Contact us" },
+];
+---
+
+<BaseLayout title="Help & Support" narrow>
+  <article class="prose support-page">
+    <header class="doc-header">
+      <h1>Help &amp; Support</h1>
+      <p class="doc-meta">Last updated: {site.lastUpdated}</p>
+    </header>
+
+    <div class="support-page__intro panel">
+      <p>
+        {site.name} is a document scanner for {site.platformsLabel}. Scan papers, edit pages, and create PDFs on your
+        device—no account required. Use the sections below or jump from the table of contents.
+      </p>
+      <div class="quick-links">
+        <a class="btn btn--secondary" href="/privacy">Privacy Policy</a>
+        <a class="btn btn--primary" href="#contact">Contact support</a>
+      </div>
+    </div>
+
+    <div class="support-layout">
+      <nav class="support-toc" aria-label="On this page">
+        <p class="support-toc__title">On this page</p>
+        <ol>
+          {toc.map(({ id, label }) => (
+            <li>
+              <a href={`#${id}`}>{label}</a>
+            </li>
+          ))}
+        </ol>
+      </nav>
+
+      <div class="support-content">
+        <ReaderSection id="requirements" title="Requirements">
+          <ul>
+            <li><strong>iOS:</strong> {stores.ios.requirement}</li>
+            <li><strong>Android:</strong> {stores.android.requirement}</li>
+            <li><strong>HarmonyOS:</strong> {stores.harmony.requirement}</li>
+            <li>Camera optional on all platforms if you only use <strong>Import</strong> from your photo library</li>
+          </ul>
+        </ReaderSection>
+
+        <ReaderSection
+          id="getting-started"
+          title="Getting started"
+          lede="Five steps from install to your first PDF."
+        >
+          <ol>
+            <li><strong>Open {site.name}</strong> and complete the welcome screen if shown.</li>
+            <li>From <strong>Home</strong>, tap <strong>Scan</strong> or <strong>Import</strong> to add pages.</li>
+            <li>Adjust pages in the editor—crop, rotate, and enhance as needed.</li>
+            <li>Create a <strong>PDF</strong> when you are ready. {site.name} does not add a watermark to PDFs it creates.</li>
+            <li>Use <strong>Share</strong> or your platform’s file picker when you want a copy outside the app.</li>
+          </ol>
+          <p>
+            Scanning, editing, and PDF creation work <strong>on your device</strong>. Core features do not require internet.
+            Optional analytics (if enabled) needs a network connection.
+          </p>
+        </ReaderSection>
+
+        <ReaderSection id="common-tasks" title="Common tasks">
+          <h3>Scan a document</h3>
+          <p>
+            Tap <strong>Scan</strong> on Home. Allow <strong>Camera</strong> access when prompted. Capture each page, then save
+            or continue editing.
+          </p>
+          <h3>Import from Photos</h3>
+          <p>Tap <strong>Import</strong> and select the images you want. Only the photos you pick are added to a document.</p>
+          <h3>Re-enable the camera</h3>
+          <p>
+            If camera access was denied, open system settings for {site.name} and turn Camera on, or use <strong>Import</strong>.
+          </p>
+          <h3>Export or share a PDF</h3>
+          <p>Open your document, run export, then choose share or save through the system sheet.</p>
+          <h3>Resume a draft</h3>
+          <p><strong>Home</strong> may show <strong>Resume draft</strong> when a saved draft is available.</p>
+          <h3>Delete documents</h3>
+          <p>
+            Delete from the document screen, or use <strong>Settings → Delete all local documents</strong> to remove everything
+            {site.name} stored on this device.
+          </p>
+        </ReaderSection>
+
+        <ReaderSection id="files" title="Where your files live">
+          <p>
+            {site.name} stores scans and PDFs in private on-device storage. They are <strong>not</strong> automatically uploaded
+            to a {site.name} cloud or synced to an account.
+          </p>
+          <ul>
+            <li><strong>Device backup:</strong> OS backups may include app data according to your settings.</li>
+            <li><strong>Exports:</strong> Files you save outside the app stay where you put them; deleting in-app does not remove them.</li>
+            <li><strong>Delete all local documents</strong> removes Paperfolio-owned files on this device only.</li>
+          </ul>
+        </ReaderSection>
+
+        <ReaderSection id="privacy" title="Privacy and analytics">
+          <p>
+            Scans stay on your device unless you export or share them. <strong>Analytics are off by default.</strong> Toggle
+            optional anonymous usage analytics in <strong>Settings</strong>.
+          </p>
+          <p>
+            Full details: <a href="/privacy">{site.name} Privacy Policy</a>. In-app copies live under{" "}
+            <strong>Settings → Privacy Policy</strong>, <strong>Terms of Use</strong>, and <strong>Accessibility</strong>.
+          </p>
+        </ReaderSection>
+
+        <ReaderSection id="feedback" title="Send feedback (in the app)">
+          <p><strong>Settings → Send feedback</strong></p>
+          <ul>
+            <li>Notes are saved <strong>on this device</strong> unless you share them elsewhere.</li>
+            <li>Attachments are optional and only sent after you confirm.</li>
+            <li>{site.name} never automatically attaches your library or scans.</li>
+            <li>Do not paste sensitive document contents or passwords in feedback.</li>
+          </ul>
+        </ReaderSection>
+
+        <ReaderSection id="limitations" title={`What ${site.name} does not do`} lede="This release—so expectations stay clear.">
+          <ul>
+            <li><strong>No OCR</strong> — scanned PDFs are page images, not searchable text.</li>
+            <li><strong>No automatic cloud sync</strong> — no Paperfolio account or server backup.</li>
+            <li><strong>No export paywall</strong> for creating local PDFs in this release.</li>
+          </ul>
+        </ReaderSection>
+
+        <ReaderSection id="troubleshooting" title="Troubleshooting">
+          <div class="table-panel">
+            <table>
+              <thead>
+                <tr>
+                  <th>Issue</th>
+                  <th>What to try</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Camera won’t open</td>
+                  <td>Allow camera in system settings, or use <strong>Import</strong>.</td>
+                </tr>
+                <tr>
+                  <td>Scan looks dark or blurry</td>
+                  <td>Better lighting, steady hold, then enhance/crop in the editor.</td>
+                </tr>
+                <tr>
+                  <td>Can’t save or export</td>
+                  <td>Free device storage; export fewer pages or remove old files.</td>
+                </tr>
+                <tr>
+                  <td>PDF missing after delete</td>
+                  <td>Check Mail, Files, or the app you used if you exported earlier.</td>
+                </tr>
+                <tr>
+                  <td>Slow with many pages</td>
+                  <td>Large docs use more memory—export and archive when done.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p>
+            Still stuck? Include <strong>device model</strong>, <strong>OS version</strong>, and <strong>{site.name} version</strong>{" "}
+            (Settings → About) when you contact us.
+          </p>
+        </ReaderSection>
+
+        <ReaderSection id="contact" title="Contact us">
+          <p>
+            For help, bugs, or feature requests, email the <strong>support address on your platform’s store listing</strong>.
+          </p>
+          <ul>
+            <li><strong>Subject:</strong> <code>Paperfolio — Support</code> or <code>Paperfolio — Bug</code></li>
+            <li>Device model and OS version</li>
+            <li>{site.name} version (Settings → About)</li>
+            <li>Short steps to reproduce the issue</li>
+          </ul>
+          <p>We read mail as we are able and cannot guarantee a response time.</p>
+        </ReaderSection>
+      </div>
+    </div>
+
+    <nav class="prose-nav" aria-label="Related">
+      <a href="/privacy">Privacy Policy</a>
+      <a href="/">Back to home</a>
+    </nav>
+  </article>
+</BaseLayout>

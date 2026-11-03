@@ -1,0 +1,45 @@
+---
+import "../styles/global.css";
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import { site } from "../site.config";
+
+interface Props {
+  title: string;
+  description?: string;
+  narrow?: boolean;
+}
+
+const { title, description = site.description, narrow = false } = Astro.props;
+const fullTitle =
+  title === site.name
+    ? `${site.name} — Scan documents to PDF on iOS, Android & HarmonyOS`
+    : `${title} · ${site.name}`;
+---
+
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#ffffff" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400..800;1,400..800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{fullTitle}</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <SiteHeader />
+    <main id="main" class:list={["page-main", "container", narrow && "container--narrow", narrow && "page-main--narrow"]}>
+      <slot />
+    </main>
+    <SiteFooter />
+  </body>
+</html>

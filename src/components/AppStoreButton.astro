@@ -1,0 +1,14 @@
+---
+import { stores } from "../site.config";
+
+interface Props {
+  href?: string;
+  label?: string;
+}
+
+const { href = stores.ios.href, label = stores.ios.cta } = Astro.props;
+---
+
+<a class="btn btn--primary" href={href} rel="noopener noreferrer">
+  {label}
+</a>

@@ -1,0 +1,15 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<span class:list={["brand__mark", className]} aria-hidden="true">
+  <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path
+      d="M3.5 3.25h9v1.5h-9v-1.5Zm0 3.5h9v1.5h-9v-1.5Zm0 3.5h6.5v1.5H3.5v-1.5Z"
+      fill="currentColor"></path>
+  </svg>
+</span>
