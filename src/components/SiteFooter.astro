@@ -1,9 +1,10 @@
 ---
 import { site, stores } from "../site.config";
+import { pathTo } from "../lib/paths";
 
 const helpLinks = [
-  { href: "/privacy", label: "Privacy" },
-  { href: "/support", label: "Support" },
+  { route: "/privacy", label: "Privacy" },
+  { route: "/support", label: "Support" },
 ];
 
 const storeLinks = [
@@ -25,9 +26,9 @@ const storeLinks = [
       <p class="footer-col__title">Help</p>
       <ul class="footer-menu">
         {
-          helpLinks.map(({ href, label }) => (
+          helpLinks.map(({ route, label }) => (
             <li>
-              <a href={href}>{label}</a>
+              <a href={pathTo(route)}>{label}</a>
             </li>
           ))
         }

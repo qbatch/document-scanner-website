@@ -3,6 +3,7 @@ import "../styles/global.css";
 import SiteHeader from "../components/SiteHeader.astro";
 import SiteFooter from "../components/SiteFooter.astro";
 import { site } from "../site.config";
+import { pathTo } from "../lib/paths";
 
 interface Props {
   title: string;
@@ -31,7 +32,7 @@ const fullTitle =
       href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400..800;1,400..800&display=swap"
       rel="stylesheet"
     />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href={pathTo("favicon.svg")} />
     <title>{fullTitle}</title>
   </head>
   <body>

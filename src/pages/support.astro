@@ -2,6 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import ReaderSection from "../components/ReaderSection.astro";
 import { site, stores } from "../site.config";
+import { pathTo } from "../lib/paths";
 
 const toc = [
   { id: "requirements", label: "Requirements" },
@@ -29,7 +30,7 @@ const toc = [
         device—no account required. Use the sections below or jump from the table of contents.
       </p>
       <div class="quick-links">
-        <a class="btn btn--secondary" href="/privacy">Privacy Policy</a>
+        <a class="btn btn--secondary" href={pathTo("/privacy")}>Privacy Policy</a>
         <a class="btn btn--primary" href="#contact">Contact support</a>
       </div>
     </div>
@@ -115,7 +116,7 @@ const toc = [
             optional anonymous usage analytics in <strong>Settings</strong>.
           </p>
           <p>
-            Full details: <a href="/privacy">{site.name} Privacy Policy</a>. In-app copies live under{" "}
+            Full details: <a href={pathTo("/privacy")}>{site.name} Privacy Policy</a>. In-app copies live under{" "}
             <strong>Settings → Privacy Policy</strong>, <strong>Terms of Use</strong>, and <strong>Accessibility</strong>.
           </p>
         </ReaderSection>
@@ -193,8 +194,8 @@ const toc = [
     </div>
 
     <nav class="prose-nav" aria-label="Related">
-      <a href="/privacy">Privacy Policy</a>
-      <a href="/">Back to home</a>
+      <a href={pathTo("/privacy")}>Privacy Policy</a>
+      <a href={pathTo("/")}>Back to home</a>
     </nav>
   </article>
 </BaseLayout>

@@ -3,6 +3,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import PlatformDownloads from "../components/PlatformDownloads.astro";
 import FeatureIcon from "../components/FeatureIcon.astro";
 import { site, stores } from "../site.config";
+import { pathTo } from "../lib/paths";
 
 const features = [
   {
@@ -150,7 +151,7 @@ const features = [
         </div>
         <div class="value-tile">
           <h3>Clear privacy</h3>
-          <p>Optional analytics are off by default. Read the <a href="/privacy">Privacy Policy</a> or <a href="/support">Support guide</a>.</p>
+          <p>Optional analytics are off by default. Read the <a href={pathTo("/privacy")}>Privacy Policy</a> or <a href={pathTo("/support")}>Support guide</a>.</p>
         </div>
       </div>
     </div>
@@ -173,7 +174,7 @@ const features = [
               {feature.icon === "privacy" && (
                 <>
                   {" "}
-                  <a href="/privacy">Privacy Policy →</a>
+                  <a href={pathTo("/privacy")}>Privacy Policy →</a>
                 </>
               )}
             </p>
@@ -236,7 +237,7 @@ const features = [
         </ul>
       </div>
     </div>
-    <p class="section-note"><a href="/support">Help &amp; Support →</a></p>
+    <p class="section-note"><a href={pathTo("/support")}>Help &amp; Support →</a></p>
   </section>
 
   <section class="cta-band" aria-labelledby="get-heading">

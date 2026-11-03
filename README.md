@@ -32,4 +32,18 @@ Edit [`src/site.config.ts`](src/site.config.ts):
 | `/privacy` | Privacy Policy |
 | `/support` | Help & Support |
 
+## GitHub Pages (project site)
+
+This repo is configured for [GitHub Pages](https://qbatch.github.io/document-scanner-website/) with `base: "/document-scanner-website"` in [`astro.config.mjs`](astro.config.mjs).
+
+| Page | URL |
+|------|-----|
+| Home | https://qbatch.github.io/document-scanner-website/ |
+| Privacy | https://qbatch.github.io/document-scanner-website/privacy/ |
+| Support | https://qbatch.github.io/document-scanner-website/support/ |
+
+`https://qbatch.github.io/privacy` will **not** work—that path is outside this project. Use the URLs above (or a custom domain at the site root).
+
+Internal links use `src/lib/paths.ts` so navigation stays under the deploy base path.
+
 Deploy the `dist/` folder to any static host (Cloudflare Pages, Netlify, GitHub Pages, etc.).

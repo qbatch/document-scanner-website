@@ -6,7 +6,7 @@
   "packageManager": "yarn@1.22.22",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "astro build && node scripts/verify-base-path.mjs",
     "preview": "astro preview"
   },
   "dependencies": {
