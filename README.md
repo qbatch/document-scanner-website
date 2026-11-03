@@ -12,9 +12,9 @@ Static site for the **Paperfolio** iOS app: landing page, Privacy Policy, and He
 ```bash
 cd landing-page
 yarn install
-yarn dev       # http://localhost:4321
-yarn build     # output in dist/
-yarn preview   # serve production build
+yarn dev       # http://localhost:4321/  (local — no /document-scanner-website prefix)
+yarn build     # output in dist/ (paths match GitHub Pages)
+yarn preview   # http://localhost:4321/document-scanner-website/
 ```
 
 ## Configuration
@@ -34,7 +34,7 @@ Edit [`src/site.config.ts`](src/site.config.ts):
 
 ## GitHub Pages (project site)
 
-This repo is configured for [GitHub Pages](https://qbatch.github.io/document-scanner-website/) with `base: "/document-scanner-website"` in [`astro.config.mjs`](astro.config.mjs).
+This repo is configured for [GitHub Pages](https://qbatch.github.io/document-scanner-website/). Production builds set `BASE_PATH=/document-scanner-website/`; local `yarn dev` uses `/` so you can open the site at the dev server root.
 
 | Page | URL |
 |------|-----|

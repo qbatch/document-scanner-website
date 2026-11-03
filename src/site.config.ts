@@ -1,10 +1,10 @@
 /** Site-wide constants — update store URLs when listings are live. */
 export const site = {
   name: "Paperfolio",
-  tagline: "Document scanner for iPhone, iPad, Android, and HarmonyOS",
+  tagline: "Document scanner for iPhone and iPad",
   description:
-    "Scan papers into watermark-free PDFs on your device. No account, offline-capable scanning, optional privacy-friendly analytics. Available on iOS, Android, and HarmonyOS.",
-  platformsLabel: "iOS · Android · HarmonyOS",
+    "Scan papers into watermark-free PDFs on your device. No account, offline-capable scanning, optional privacy-friendly analytics. iOS 17+.",
+  platformsLabel: "iPhone & iPad · iOS 17+",
   lastUpdated: "November 2, 2026",
   copyrightYear: 2026,
 } as const;
@@ -29,6 +29,13 @@ export const stores = {
     requirement: "HarmonyOS-compatible devices",
   },
 } as const;
+
+/** Toggle when additional store listings go live. */
+export const publishedStoreKeys = ["ios"] as const satisfies ReadonlyArray<keyof typeof stores>;
+
+export function getPublishedStores() {
+  return publishedStoreKeys.map((key) => stores[key]);
+}
 
 /** Primary store link for generic “contact on store page” copy until a dedicated support email is published. */
 export const primaryStoreUrl = stores.ios.href;

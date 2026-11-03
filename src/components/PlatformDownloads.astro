@@ -1,23 +1,20 @@
 ---
-import { stores } from "../site.config";
+import { getPublishedStores } from "../site.config";
 
 interface Props {
-  iosFirst?: boolean;
   compact?: boolean;
 }
 
-const { iosFirst = true, compact = false } = Astro.props;
+const { compact = false } = Astro.props;
 
-const ordered = iosFirst
-  ? [stores.ios, stores.android, stores.harmony]
-  : [stores.android, stores.harmony, stores.ios];
+const stores = getPublishedStores();
 ---
 
 <div class:list={["download-row", compact && "download-row--compact"]}>
   {
-    ordered.map((store, index) => (
+    stores.map((store, index) => (
       <a
-        class:list={["btn", index === 0 && iosFirst ? "btn--primary" : "btn--secondary"]}
+        class:list={["btn", index === 0 ? "btn--primary" : "btn--secondary"]}
         href={store.href}
         rel="noopener noreferrer"
       >

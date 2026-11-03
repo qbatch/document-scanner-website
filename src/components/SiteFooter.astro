@@ -1,5 +1,5 @@
 ---
-import { site, stores } from "../site.config";
+import { site, stores, getPublishedStores } from "../site.config";
 import { pathTo } from "../lib/paths";
 
 const helpLinks = [
@@ -7,11 +7,11 @@ const helpLinks = [
   { route: "/support", label: "Support" },
 ];
 
-const storeLinks = [
-  { href: stores.ios.href, label: stores.ios.name, external: true },
-  { href: stores.android.href, label: stores.android.name, external: true },
-  { href: stores.harmony.href, label: stores.harmony.name, external: true },
-];
+const storeLinks = getPublishedStores().map((store) => ({
+  href: store.href,
+  label: store.name,
+  external: true,
+}));
 ---
 
 <footer class="site-footer">
@@ -52,11 +52,10 @@ const storeLinks = [
 
     <div class="footer-col footer-col--legal">
       <p class="footer-fine">
-        Contact: use the support email on your platform’s store listing for help or privacy requests.
+        Contact: use the support email on the {stores.ios.name} listing for help or privacy requests.
       </p>
       <p class="footer-fine footer-fine--copy">
-        © {site.copyrightYear} {site.name}. Apple, Google, Huawei, and related marks are trademarks of their respective
-        owners.
+        © {site.copyrightYear} {site.name}. Apple, iPhone, iPad, and App Store are trademarks of Apple Inc.
       </p>
     </div>
   </div>

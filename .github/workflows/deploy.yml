@@ -21,6 +21,8 @@ jobs:
 
       - name: Build and upload Astro site
         uses: withastro/action@v6
+        env:
+          BASE_PATH: /document-scanner-website/
 
   deploy:
     needs: build
