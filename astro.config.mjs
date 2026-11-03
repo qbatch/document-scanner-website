@@ -2,6 +2,6 @@ import { defineConfig } from "astro/config";
 
 export default defineConfig({
   site: "https://qbatch.github.io",
-  base: "/paperfolio",
+  base: "/document-scanner-website",
   compressHTML: true,
 });
