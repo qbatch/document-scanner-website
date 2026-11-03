@@ -12,17 +12,17 @@ Static site for the **Paperfolio** iOS app: landing page, Privacy Policy, and He
 ```bash
 cd landing-page
 yarn install
-yarn dev       # http://localhost:4321/  (local — no /document-scanner-website prefix)
-yarn build     # output in dist/ (paths match GitHub Pages)
-yarn preview   # http://localhost:4321/document-scanner-website/
+yarn dev       # http://localhost:4321/
+yarn build     # output in dist/
+yarn preview   # http://localhost:4321/
 ```
 
 ## Configuration
 
 Edit [`src/site.config.ts`](src/site.config.ts):
 
-- `stores.ios`, `stores.android`, `stores.harmony` — product URLs when each listing is live
-- `site` in [`astro.config.mjs`](astro.config.mjs) — production domain for sitemap/canonical URLs
+- `stores.ios` — App Store product URL when the listing is live
+- `site` in [`astro.config.mjs`](astro.config.mjs) — canonical site URL (currently [paperfolio.lixul.com](https://paperfolio.lixul.com/))
 
 ## Pages
 
@@ -32,18 +32,16 @@ Edit [`src/site.config.ts`](src/site.config.ts):
 | `/privacy` | Privacy Policy |
 | `/support` | Help & Support |
 
-## GitHub Pages (project site)
-
-This repo is configured for [GitHub Pages](https://qbatch.github.io/document-scanner-website/). Production builds set `BASE_PATH=/document-scanner-website/`; local `yarn dev` uses `/` so you can open the site at the dev server root.
+## Production URLs
 
 | Page | URL |
 |------|-----|
-| Home | https://qbatch.github.io/document-scanner-website/ |
-| Privacy | https://qbatch.github.io/document-scanner-website/privacy/ |
-| Support | https://qbatch.github.io/document-scanner-website/support/ |
+| Home | https://paperfolio.lixul.com/ |
+| Privacy | https://paperfolio.lixul.com/privacy/ |
+| Support | https://paperfolio.lixul.com/support/ |
 
-`https://qbatch.github.io/privacy` will **not** work—that path is outside this project. Use the URLs above (or a custom domain at the site root).
+The site is deployed at the domain root (`base: "/"`). Internal links use `src/lib/paths.ts`.
 
-Internal links use `src/lib/paths.ts` so navigation stays under the deploy base path.
+[`public/CNAME`](public/CNAME) is included for GitHub Pages custom-domain deploys.
 
-Deploy the `dist/` folder to any static host (Cloudflare Pages, Netlify, GitHub Pages, etc.).
+Deploy the `dist/` folder to any static host (GitHub Pages, Cloudflare Pages, Netlify, etc.).

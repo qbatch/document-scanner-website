@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 /**
- * Fail the build if internal links ignore Astro `base` (common GitHub Pages bug).
+ * Catch internal links that ignore Astro `base` (e.g. old GitHub Pages subpath deploys).
  */
 import { readFileSync, readdirSync, statSync } from "node:fs";
 import { join } from "node:path";
 
-const base = process.env.BASE_PATH ?? "/document-scanner-website/";
-const normalized = base.endsWith("/") ? base.slice(0, -1) : base;
+const base = process.env.BASE_PATH ?? "/";
+const isRootDeploy = base === "/" || base === "";
 
 function walkHtml(dir, out = []) {
   for (const name of readdirSync(dir)) {
@@ -18,12 +18,20 @@ function walkHtml(dir, out = []) {
 }
 
 const htmlFiles = walkHtml("dist");
-const forbidden = ['href="/privacy"', 'href="/support"', 'href="/"'];
-
 let failed = false;
 
 for (const file of htmlFiles) {
   const html = readFileSync(file, "utf8");
+
+  if (isRootDeploy) {
+    if (html.includes("/document-scanner-website")) {
+      console.error(`[verify-base-path] ${file} still references /document-scanner-website (use pathTo())`);
+      failed = true;
+    }
+    continue;
+  }
+
+  const forbidden = ['href="/privacy"', 'href="/support"', 'href="/"'];
   for (const pattern of forbidden) {
     if (html.includes(pattern)) {
       console.error(`[verify-base-path] ${file} contains ${pattern}`);
@@ -33,10 +41,8 @@ for (const file of htmlFiles) {
 }
 
 if (failed) {
-  console.error(
-    `\nInternal links must use pathTo() (base "${normalized}/"). See src/lib/paths.ts.\n`,
-  );
+  console.error("\nFix internal links in src/lib/paths.ts and components.\n");
   process.exit(1);
 }
 
-console.log(`[verify-base-path] OK (${htmlFiles.length} HTML files)`);
+console.log(`[verify-base-path] OK (${htmlFiles.length} HTML files, base ${base})`);
