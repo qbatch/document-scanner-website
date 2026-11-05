@@ -1,6 +1,6 @@
-# Paperfolio marketing site (Astro)
+# PaperTidy marketing site (Astro)
 
-Static site for the **Paperfolio** iOS app: landing page, Privacy Policy, and Help & Support. Copy is aligned with [`document-scanner/docs/legal/`](../document-scanner/docs/legal/).
+Static site for the **PaperTidy** iOS app: landing page, Privacy Policy, and Help & Support. Copy is aligned with [`document-scanner/docs/legal/`](../document-scanner/docs/legal/).
 
 ## Requirements
 

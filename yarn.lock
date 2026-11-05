@@ -3085,9 +3085,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"paperfolio-web@workspace:.":
+"papertidy-web@workspace:.":
   version: 0.0.0-use.local
-  resolution: "paperfolio-web@workspace:."
+  resolution: "papertidy-web@workspace:."
   dependencies:
     "@astrojs/sitemap": 3.2.1
     astro: ^4.16.18

@@ -2,7 +2,7 @@ import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 
 export default defineConfig({
-  site: "https://paperfolio.lixul.com",
+  site: "https://papertidy.lixul.com",
   base: "/",
   compressHTML: true,
   trailingSlash: "always",

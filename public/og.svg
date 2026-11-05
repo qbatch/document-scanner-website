@@ -1,9 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Paperfolio document scanner for iPhone and iPad">
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="PaperTidy document scanner for iPhone and iPad">
   <rect width="1200" height="630" fill="#fafbfc"/>
   <rect x="0" y="0" width="1200" height="8" fill="#0d7377"/>
   <rect x="80" y="120" width="72" height="72" rx="16" fill="#0d7377"/>
   <path fill="#fff" d="M104 148h48v6H104v-6Zm0 18h48v6H104v-6Zm0 18h32v6h-32v-6Z"/>
-  <text x="172" y="168" font-family="system-ui, sans-serif" font-size="52" font-weight="700" fill="#11181c">Paperfolio</text>
+  <text x="172" y="168" font-family="system-ui, sans-serif" font-size="52" font-weight="700" fill="#11181c">PaperTidy</text>
   <text x="172" y="210" font-family="system-ui, sans-serif" font-size="28" fill="#334048">Scan documents to PDF on iPhone &amp; iPad</text>
   <text x="80" y="320" font-family="system-ui, sans-serif" font-size="26" fill="#5c6b75">Watermark-free PDFs · On-device · No account required</text>
   <rect x="80" y="380" width="320" height="56" rx="10" fill="#0d7377"/>
